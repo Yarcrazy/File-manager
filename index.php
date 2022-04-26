@@ -31,8 +31,9 @@ function renderItem($item, $path, $oldPath = DEFAULT_PATH) {
     return $result;
 }
 
+ini_set('open_basedir', '.');
+error_reporting(E_ERROR);
 $path = $_GET['path'] ?? DEFAULT_PATH;
-$path = preg_match('/^\.\/public_html/', $path) ? $path : DEFAULT_PATH;
 $oldPath = $_GET['oldPath'] ?? DEFAULT_PATH;
 $dir = scandir($path, SORT_REGULAR);
 foreach ($dir as $item) {
